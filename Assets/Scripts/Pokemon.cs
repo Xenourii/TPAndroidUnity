@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Pokemon : MonoBehaviour
 {
+    [SerializeField] private Vector3 _rotation;
+    private Quaternion _initialRotation;
     private GameManager _gameManager;
     private bool _isZoomedOnMe = false;
-    private bool _isShinny = false;
+    private bool _isShinny = true;
 
     void Start()
     {
         _gameManager = Camera.main.GetComponent<GameManager>();
         _gameManager.Touch += OnTouchObject;
         _gameManager.ZoomChanged += OnZoomChangedEvent;
+        _initialRotation = transform.rotation;
+    }
+
+    private void Update()
+    {
+        if (!_isZoomedOnMe)
+        {
+            transform.Rotate(_rotation * Time.deltaTime);
+        }
     }
 
     void OnTouchObject(object sender, TouchEventArgs touchEvent)
@@ -32,7 +43,14 @@ public class Pokemon : MonoBehaviour
 
     void OnZoomChangedEvent(object sender, ZoomEventArgs zoomEvent)
     {
-        _isZoomedOnMe = zoomEvent.IsZoomed && zoomEvent.ZoomPosition == transform.position;
-        gameObject.SetActive(_isZoomedOnMe);
+        _isZoomedOnMe = zoomEvent.ZoomPosition == transform.position;
+        if (zoomEvent.IsZoomed)
+        {
+            transform.rotation = _initialRotation;
+            gameObject.SetActive(_isZoomedOnMe);
+        } else
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

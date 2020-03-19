@@ -13,6 +13,7 @@ public class Button : MonoBehaviour
         var gameManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>();
         gameManager.ZoomChanged += OnZoomChanged;
         _button = GetComponent<Button>();
+        _button.gameObject.SetActive(false);
     }
 
     private void OnZoomChanged(object sender, ZoomEventArgs zoomEvent)
