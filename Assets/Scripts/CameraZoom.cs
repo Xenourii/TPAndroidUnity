@@ -12,7 +12,7 @@ public class CameraZoom : MonoBehaviour
     {
         gameManager = GetComponent<GameManager>();
         _initialPosition = transform.position;
-        gameManager.ZoomChangedEvent += OnZoomChangedEvent;
+        gameManager.ZoomChanged += OnZoomChangedEvent;
     }
 
     void OnZoomChangedEvent(object sender, ZoomEventArgs zoomEvent)

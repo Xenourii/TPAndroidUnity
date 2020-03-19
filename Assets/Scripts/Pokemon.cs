@@ -12,7 +12,7 @@ public class Pokemon : MonoBehaviour
     {
         _gameManager = Camera.main.GetComponent<GameManager>();
         _gameManager.Touch += OnTouchObject;
-        _gameManager.ZoomChangedEvent += OnZoomChangedEvent;
+        _gameManager.ZoomChanged += OnZoomChangedEvent;
     }
 
     void OnTouchObject(object sender, TouchEventArgs touchEvent)
