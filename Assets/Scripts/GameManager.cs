@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     private event EventHandler<ZoomEventArgs> _zoomChangedEvent;
 
-    public event EventHandler<ZoomEventArgs> ZoomChangedEvent
+    public event EventHandler<ZoomEventArgs> ZoomChanged
     {
         add => _zoomChangedEvent += value;
         remove => _zoomChangedEvent -= value;

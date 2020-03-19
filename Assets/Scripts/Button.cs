@@ -5,15 +5,19 @@ using UnityEngine.Events;
 
 public class Button : MonoBehaviour
 {
+    private Button _button;
+
     // Start is called before the first frame update
     void Start()
     {
         var gameManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>();
-        gameManager.ZoomChangedEvent += OnZoomChanged;
+        gameManager.ZoomChanged += OnZoomChanged;
+        _button = GetComponent<Button>();
     }
 
     private void OnZoomChanged(object sender, ZoomEventArgs zoomEvent)
     {
+        _button.gameObject.SetActive(zoomEvent.IsZoomed);
         Debug.Log($"zoom={zoomEvent.IsZoomed}");
     }
 
