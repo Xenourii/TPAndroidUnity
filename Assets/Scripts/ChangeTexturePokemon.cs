@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ChangeTexturePokemon : MonoBehaviour
 {
+    private GameManager _gameManager;
     public Material[] materials;
     public Material[] materialsShiny;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _gameManager = Camera.main.GetComponent<GameManager>();
+        _gameManager.ChangeMaterials += OnChangeMaterials;
     }
 
-    public void setMaterials(bool shiny)
+    private void setMaterials(bool shiny)
     {
         Renderer renderer = GetComponent<Renderer>();
         if (shiny)
@@ -25,16 +28,11 @@ public class ChangeTexturePokemon : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnChangeMaterials(object sender, ChangeMaterialsEventArgs changeMaterialsEvent)
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if(tag == changeMaterialsEvent.PokemonTag)
         {
-            setMaterials(true);
-        }
-        else if (Input.GetKey(KeyCode.Mouse1))
-        {
-            setMaterials(false);
+            setMaterials(changeMaterialsEvent.Shinny);
         }
     }
 }
