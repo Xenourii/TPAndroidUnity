@@ -661,6 +661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 492355466961296724}
+  - component: {fileID: 6185151358795973208}
   m_Layer: 0
   m_Name: Celebi Shiny
   m_TagString: Untagged
@@ -684,6 +685,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -5.3430004, y: -164.33, z: -4.853}
+--- !u!114 &6185151358795973208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498852057767866183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168792f02acdf2c4abef78134c7e3a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 20, z: 0}
 --- !u!1 &3507163984912117954
 GameObject:
   m_ObjectHideFlags: 0
