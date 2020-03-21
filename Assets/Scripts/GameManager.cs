@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool _isZoomed = false;
 
+    public bool IsZoomed => _isZoomed;
+
     [SerializeField]
     private TouchPhase touchPhase = TouchPhase.Ended;
 
